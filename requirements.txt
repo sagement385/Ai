@@ -1,0 +1,11 @@
+pandas>=2.0
+numpy>=1.24
+requests>=2.31
+python-dotenv>=1.0
+yfinance>=0.2.50
+pykrx>=1.0.48
+pywin32>=306; platform_system=="Windows"
+# Optional helpers for KRX/DART notebooks and CSV conversions
+lxml>=5.2.0
+html5lib>=1.1
+beautifulsoup4>=4.12.0

@@ -1,0 +1,35 @@
+{
+  "project": "stock_swing_signal_engine_github_ready",
+  "created_for": "GitHub upload",
+  "file_count": 122,
+  "notes": [
+    "Excluded __pycache__, pyc, local secret files, token caches, DB/log/archive files.",
+    "Added .gitignore, GITHUB_UPLOAD_GUIDE.md, AI_HANDOFF_PROMPT.md, and .gitkeep files for empty generated folders."
+  ],
+  "top_level_files": [
+    ".env.example",
+    ".gitignore",
+    "AI_HANDOFF_PROMPT.md",
+    "CHANGELOG_20260528_FIB_CHART.md",
+    "CHANGELOG_20260531_ADVANCED_BACKTEST.md",
+    "CHANGELOG_20260531_AI_COPILOT_V15.md",
+    "CHANGELOG_20260531_CAPITAL_INJECTION_V10.md",
+    "CHANGELOG_20260531_DEEP_TURNAROUND_V9.md",
+    "CHANGELOG_20260531_ENTRY_DISCIPLINE_KOREA_V12.md",
+    "CHANGELOG_20260531_LONG_SWING_V8.md",
+    "CHANGELOG_20260531_MULTI_STRATEGY.md",
+    "CHANGELOG_20260531_ORIGINAL_PROFILES_AI_THEME_V14.md",
+    "CHANGELOG_20260531_QUANTKING.md",
+    "CHANGELOG_20260531_RISK_OVERLAY_V4.md",
+    "CHANGELOG_20260531_UI_BACKTEST_TERMINAL.md",
+    "CHANGELOG_20260531_ULTRA_10X_V11.md",
+    "CHANGELOG_20260531_WEB_TERMINAL_V5.md",
+    "CHANGELOG_20260531_WEB_TERMINAL_V6.md",
+    "CHANGELOG_20260531_YFINANCE.md",
+    "GITHUB_UPLOAD_GUIDE.md",
+    "README.md",
+    "main.py",
+    "main_v5_backup.py",
+    "requirements.txt"
+  ]
+}
