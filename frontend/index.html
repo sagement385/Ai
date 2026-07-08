@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>충북 집중호우 디지털 트윈</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIINfQczroIzmxgTp3eqm9lc7p8U6uU6U8M="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark"></span>
+          <div>
+            <h1>충북 집중호우 디지털 트윈</h1>
+            <p id="runtime-status">상태 확인 중</p>
+          </div>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>수문 API</h2>
+          </div>
+          <dl class="status-list" id="api-status"></dl>
+        </section>
+
+        <section class="panel fill">
+          <div class="panel-head">
+            <h2>예측 입력</h2>
+            <button id="format-input" class="ghost-button" type="button">정렬</button>
+          </div>
+          <textarea id="simulation-input" spellcheck="false"></textarea>
+        </section>
+
+        <div class="actions">
+          <button id="run-simulation" class="primary-button" type="button">시뮬레이션 실행</button>
+          <button id="load-empty" class="secondary-button" type="button">초기화</button>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <nav class="tabs" aria-label="views">
+            <button class="tab active" data-view="map-view" type="button">지도</button>
+            <button class="tab" data-view="prediction-view" type="button">예측</button>
+            <button class="tab" data-view="validation-view" type="button">검증</button>
+            <button class="tab" data-view="sources-view" type="button">출처</button>
+          </nav>
+          <div class="risk-pill" id="overall-risk">unknown</div>
+        </header>
+
+        <section id="map-view" class="view active">
+          <div id="map"></div>
+          <div class="map-side">
+            <h2>좌표 없음</h2>
+            <ul id="unmapped-assets" class="plain-list"></ul>
+          </div>
+        </section>
+
+        <section id="prediction-view" class="view">
+          <div class="split">
+            <div>
+              <h2>시설별 위험도</h2>
+              <div id="prediction-list" class="record-list"></div>
+            </div>
+            <div>
+              <h2>조치 카드</h2>
+              <div id="decision-list" class="record-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="validation-view" class="view">
+          <div class="split">
+            <div>
+              <h2>검증 라벨</h2>
+              <textarea id="validation-input" spellcheck="false"></textarea>
+              <button id="run-validation" class="secondary-button" type="button">검증 비교</button>
+            </div>
+            <div>
+              <h2>비교 결과</h2>
+              <pre id="validation-output" class="json-output"></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="sources-view" class="view">
+          <h2>데이터 공백</h2>
+          <ul id="data-gaps" class="plain-list"></ul>
+          <h2>원본 JSON</h2>
+          <pre id="raw-output" class="json-output"></pre>
+        </section>
+      </main>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/static/js/app.js"></script>
+  </body>
+</html>
+

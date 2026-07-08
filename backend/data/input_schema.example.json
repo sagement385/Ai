@@ -1,0 +1,12 @@
+{
+  "scenario_id": "string",
+  "mode": "observed",
+  "rainfall_observations": [],
+  "water_level_observations": [],
+  "hydraulic_assets": [],
+  "notes": [
+    "observed mode requires actual API, public dataset, official report, field observation, verified GIS, or engineering report sources",
+    "validation events must be sent only to /api/validation/compare, not to /api/simulations/run"
+  ]
+}
+

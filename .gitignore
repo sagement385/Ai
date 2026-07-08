@@ -1,0 +1,10 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+backend/logs/api_snapshots/*.json
+work/
+outputs/
+.DS_Store
+Thumbs.db
+

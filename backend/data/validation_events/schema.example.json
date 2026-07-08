@@ -1,0 +1,15 @@
+{
+  "validation_events": [
+    {
+      "event_id": "string",
+      "asset_id": "string",
+      "event_type": "failure_or_inundation_reported",
+      "expected_model_signal": "failure_or_inundation_reported",
+      "observed_at": "ISO-8601 datetime",
+      "source_name": "official report or news source name",
+      "source_url": "https://...",
+      "source_type": "official_report"
+    }
+  ]
+}
+
