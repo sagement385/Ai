@@ -34,10 +34,34 @@
 - 좌표와 출처가 있는 시설만 지도에 표시한다.
 - 좌표 없는 시설은 `좌표 없음` 목록에 표시한다.
 - 출처 없는 시설은 위험도 계산에서 제외한다.
+- MapLibre 기본 지도 위에 deck.gl 레이어를 동기화한다.
+- GIS 카탈로그에 등록된 실제 GeoJSON만 레이어 토글에 노출한다.
 
-## 6. Local Test Command
+## 6. GIS Catalog Test
+
+- `GET /api/gis/catalog`는 manifest, 외부 참고 카탈로그, DEM tile 설정을 반환한다.
+- `GET /api/gis/layers/{layer_id}`는 manifest에 등록되고 실제 파일이 존재하는 GeoJSON만 반환한다.
+- 레이어 source metadata가 없으면 `valid_source=false`로 표시한다.
+
+## 7. Local Test Command
 
 ```powershell
 python -m unittest discover -s tests
 ```
 
+결과: 7 tests OK.
+
+```powershell
+$files = @('backend\app.py') + (Get-ChildItem backend\services\*.py | ForEach-Object { $_.FullName })
+python -m py_compile @files
+```
+
+결과: 모든 백엔드 모듈 컴파일 OK.
+
+## 8. Browser Smoke Test
+
+- `http://127.0.0.1:8787` 로컬 서버 기동 확인.
+- 런타임 상태 패널: `STRICT_DATA_MODE=true`.
+- GIS 카탈로그: 외부 참고 카탈로그 3건 표시.
+- 실제 GIS 레이어 파일 미등록 상태에서는 "등록된 GIS 레이어 없음"으로 표시.
+- 브라우저 콘솔 오류 없음.

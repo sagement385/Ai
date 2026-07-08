@@ -13,6 +13,7 @@ if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
 from backend.services.config import FRONTEND_ROOT, get_settings, public_config_status
+from backend.services.gis_catalog import load_catalog, read_layer
 from backend.services.hrfco_client import (
     get_discharge,
     get_flood_warning,
@@ -40,6 +41,14 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(public_config_status())
         if parsed.path == "/api/decision/schema":
             return self._json(decision_schema())
+        if parsed.path == "/api/gis/catalog":
+            return self._json(load_catalog())
+        if parsed.path.startswith("/api/gis/layers/"):
+            layer_id = parsed.path.rsplit("/", 1)[-1]
+            data, error = read_layer(layer_id)
+            if error:
+                return self._json({"status": "error", "reason": error}, status=404)
+            return self._json(data)
         if parsed.path == "/api/hrfco/stations":
             qs = parse_qs(parsed.query)
             return self._json(get_station_metadata(qs.get("hydro_type", ["waterlevel"])[0]))
@@ -140,4 +149,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

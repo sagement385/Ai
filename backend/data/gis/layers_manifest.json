@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "updated_at": null,
+  "layers": [],
+  "external_catalog": [
+    {
+      "id": "admdongkor",
+      "name": "대한민국 행정동 경계",
+      "recommended_use": "행정동/시군구/시도 choropleth 및 지역 코드 매칭",
+      "source_name": "vuski/admdongkor",
+      "source_url": "https://github.com/vuski/admdongkor",
+      "source_type": "public_dataset",
+      "notes": "WGS84 GeoJSON과 Parquet 경계를 제공한다. 필요한 시점/레벨 파일만 backend/data/gis/admin/에 저장한다."
+    },
+    {
+      "id": "geo-korea",
+      "name": "Geo Korea TopoJSON visualization reference",
+      "recommended_use": "TopoJSON 기반 한국 지도 렌더링과 테마 스타일 참고",
+      "source_name": "bennykim/geo-korea",
+      "source_url": "https://github.com/bennykim/geo-korea",
+      "source_type": "public_dataset",
+      "notes": "D3/TopoJSON 시각화 패턴 참고용. 실제 레이어 파일은 출처와 좌표계를 확인해 별도 등록한다."
+    },
+    {
+      "id": "ngii-dem",
+      "name": "국토지리정보원 DEM",
+      "recommended_use": "고도, 음영기복, 유역/저지대 분석",
+      "source_name": "국토교통부 국토지리정보원_DEM",
+      "source_url": "https://www.data.go.kr/data/15059920/fileData.do",
+      "source_type": "public_dataset",
+      "notes": "IMG 형식 DEM은 QGIS/GDAL로 hillshade 또는 terrain tile로 변환한 뒤 등록한다."
+    }
+  ]
+}
+

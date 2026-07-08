@@ -18,9 +18,15 @@ python backend/app.py
 HRFCO_API_KEY=
 KWATER_API_KEY=
 OPENAI_API_KEY=
+DATABASE_URL=
 ENABLE_LLM=false
 SAVE_API_SNAPSHOTS=true
 STRICT_DATA_MODE=true
+VWORLD_API_KEY=
+GIS_LAYER_MANIFEST=backend/data/gis/layers_manifest.json
+MAP_BASE_STYLE=
+DEM_TERRAIN_TILE_URL=
+DEM_TERRAIN_ATTRIBUTION=
 ```
 
 ## 핵심 구조
@@ -29,7 +35,8 @@ STRICT_DATA_MODE=true
 - `backend/services/validation_engine.py`: 뉴스/공식 사고 라벨과 예측 결과 비교
 - `backend/services/hrfco_client.py`: 한강홍수통제소 표준수문DB 연결
 - `backend/services/kwater_client.py`: K-water 수문 운영 정보 연결
-- `frontend/index.html`: 지도, 예측, 검증, 출처 패널
+- `backend/services/gis_catalog.py`: 실제 GIS 파일과 DEM 타일 설정 카탈로그
+- `frontend/index.html`: MapLibre + deck.gl 기반 지도, 예측, 검증, 출처 패널
 
 ## 데이터 원칙
 
@@ -46,6 +53,8 @@ STRICT_DATA_MODE=true
 - `GET /api/hrfco/rainfall?station_code=...&start_time=...&end_time=...`
 - `GET /api/hrfco/water-level?station_code=...&start_time=...&end_time=...`
 - `GET /api/kwater/dam-observations?dam_code=...&start_time=YYYY-MM-DD&end_time=YYYY-MM-DD`
+- `GET /api/gis/catalog`
+- `GET /api/gis/layers/{layer_id}`
 - `POST /api/simulations/run`
 - `POST /api/validation/compare`
 
@@ -57,3 +66,18 @@ STRICT_DATA_MODE=true
 4. `/api/validation/compare`로 맞은 부분과 틀린 부분을 비교한다.
 5. 틀린 지점은 입력 데이터, 임계값, 수문 모델, 지형 자료를 보강한다.
 
+## 지도/GIS 확장
+
+- GIS 파일 위치: `backend/data/gis/`
+- 레이어 등록: `backend/data/gis/layers_manifest.json`
+- 안내 문서: `docs/GIS_LAYER_GUIDE.md`
+- 카탈로그 API: `GET /api/gis/catalog`
+- 레이어 API: `GET /api/gis/layers/{layer_id}`
+
+권장 자료:
+
+- `vuski/admdongkor`: 행정동/시군구/시도 경계
+- `bennykim/geo-korea`: 한국 지도 TopoJSON/시각화 패턴 참고
+- `YeonjuRyu/react-korea-map-visualization`: choropleth, bubble, point 스타일 참고
+- 국토지리정보원 DEM: 고도/음영기복/저지대 분석용
+- VWorld API: 배경지도, WMS/WFS, 공간정보 API 연동 후보

@@ -40,3 +40,33 @@
 - `source_url`
 - `source_type`
 
+## 지도 시각화 참고 자료
+
+### vuski/admdongkor
+
+- URL: https://github.com/vuski/admdongkor
+- 용도: 행정동/시군구/시도 경계와 행정 코드 매칭
+- 저장 위치: `backend/data/gis/admin/`
+
+### bennykim/geo-korea
+
+- URL: https://github.com/bennykim/geo-korea
+- 용도: 한국 지도 TopoJSON 시각화, hover/click, custom marker, dark theme 참고
+
+### YeonjuRyu/react-korea-map-visualization
+
+- URL: https://github.com/YeonjuRyu/react-korea-map-visualization
+- 용도: Choropleth Map, Bubble Map, Point Map, Pie Chart Map 스타일 참고
+
+### 국토지리정보원 DEM
+
+- 공공데이터포털: https://www.data.go.kr/data/15059920/fileData.do
+- 국토정보플랫폼: http://map.ngii.go.kr/ms/map/NlipMap.do?tabGb=total
+- 저장 위치: `backend/data/gis/terrain/`
+- 주의: 원본 IMG는 웹에서 직접 쓰기 어렵다. QGIS/GDAL로 hillshade 또는 terrain tile로 변환한 뒤 `.env`의 `DEM_TERRAIN_TILE_URL`에 연결한다.
+
+### MapLibre + deck.gl
+
+- MapLibre GL JS: https://maplibre.org/maplibre-gl-js/docs/
+- deck.gl MapboxOverlay 참고: https://deck.gl/docs/api-reference/mapbox/mapbox-overlay
+- 현재 MVP는 빌드 없이 동작하도록 MapLibre 지도 위에 deck.gl canvas overlay를 동기화한다.
